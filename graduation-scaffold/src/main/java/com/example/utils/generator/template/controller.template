@@ -1,0 +1,68 @@
+package com.example.controller;
+
+import com.example.common.Result;
+import com.example.entity.{entityName};
+import com.example.service.{entityName}Service;
+import com.example.entity.User;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.web.bind.annotation.*;
+import com.example.exception.CustomException;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/{lowerName}")
+public class {entityName}Controller {
+    @Resource
+    private {entityName}Service {lowerName}Service;
+    @Resource
+    private HttpServletRequest request;
+
+    public User getUser() {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            throw new CustomException("-1", "请登录");
+        }
+        return user;
+    }
+
+    @PostMapping
+    public Result<?> save(@RequestBody {entityName} {lowerName}) {
+        return Result.success({lowerName}Service.save({lowerName}));
+    }
+
+    @PutMapping
+    public Result<?> update(@RequestBody {entityName} {lowerName}) {
+        return Result.success({lowerName}Service.updateById({lowerName}));
+    }
+
+    @DeleteMapping("/{id}")
+    public Result<?> delete(@PathVariable Long id) {
+        {lowerName}Service.removeById(id);
+        return Result.success();
+    }
+
+    @GetMapping("/{id}")
+    public Result<?> findById(@PathVariable Long id) {
+        return Result.success({lowerName}Service.getById(id));
+    }
+
+    @GetMapping
+    public Result<?> findAll() {
+        return Result.success({lowerName}Service.list());
+    }
+
+    @GetMapping("/page")
+    public Result<?> findPage(@RequestParam(required = false, defaultValue = "") String name,
+                                                @RequestParam(required = false, defaultValue = "1") Integer pageNum,
+                                                @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+        LambdaQueryWrapper<{entityName}> query = Wrappers.<{entityName}>lambdaQuery().like({entityName}::getName, name).orderByDesc({entityName}::getId);;
+        return Result.success({lowerName}Service.page(new Page<>(pageNum, pageSize), query));
+    }
+
+}
