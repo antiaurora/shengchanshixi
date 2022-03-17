@@ -1,0 +1,44 @@
+企业微信机器人:.
+│  tree.txt
+│  
+├─代码包
+│  │  ierror.py
+│  │  index.py
+│  │  requirements.txt
+│  │  sql.py
+│  │  WXBizMsgCrypt3.py
+│  │  
+│  └─__pycache__
+│          ierror.cpython-38.pyc
+│          ierror.cpython-39.pyc
+│          sql.cpython-38.pyc
+│          sql.cpython-39.pyc
+│          WXBizMsgCrypt3.cpython-38.pyc
+│          WXBizMsgCrypt3.cpython-39.pyc
+│          
+└─部署包
+    │  index.spec
+    │  
+    ├─build
+    │  └─index
+    │          Analysis-00.toc
+    │          base_library.zip
+    │          EXE-00.toc
+    │          index.exe.manifest
+    │          PKG-00.pkg
+    │          PKG-00.toc
+    │          PYZ-00.pyz
+    │          PYZ-00.toc
+    │          Tree-00.toc
+    │          Tree-01.toc
+    │          Tree-02.toc
+    │          warn-index.txt
+    │          xref-index.html
+    │          
+    ├─dist
+    └─__pycache__
+            ierror.cpython-39.pyc
+            index.cpython-39.pyc
+            sql.cpython-39.pyc
+            WXBizMsgCrypt3.cpython-39.pyc
+            
